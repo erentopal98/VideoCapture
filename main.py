@@ -1,4 +1,6 @@
 import cv2
+print("Video Recording")
+#Firstly please If your camera is locked, unlock it
 
 # Get video duration in seconds from user
 duration = int(input("Enter video duration (in seconds): "))
@@ -10,8 +12,8 @@ file_name = input("Enter video file name (with extension): ")
 cap = cv2.VideoCapture(0)
 
 # The VideoWriter class is used to save the file. Define the codec and create a video writer object
-#The *'XVID' argument passed to the function is a shorthand for the string 'XVID', which is a specific codec that is supported by OpenCV.
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
+#mp4v argument passed to the function is a shorthand for the string mp4v, which is a specific codec that is supported by OpenCV.
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
 #It is the number of frames per second (FPS) for the video, which is set to 20.0.
 #It is the size of the video frame, which is set to (640, 480), representing a width of 640 pixels and a height of 480 pixels
@@ -41,8 +43,9 @@ while(int((cv2.getTickCount() - start_time)/cv2.getTickFrequency()) < duration):
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     else:
+        print("Video recording finished")
         break
-
+print("Video recording finished")
 # If job is finished, release everything
 cap.release()
 out.release()
